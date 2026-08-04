@@ -411,7 +411,27 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
   color:#fff;margin:0;line-height:1;letter-spacing:-.02em;
   display:flex;align-items:flex-end;gap:2px}
 .hero-word svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none;overflow:visible}
-.hero-word .kr{color:var(--accent)}
+/* K/R merge: the wordmark's two brand-color letters start pulled apart
+   (K left, R right) and slide together on load, landing right as the
+   page's own .herowrap fade-in finishes (.24s delay + .5s duration above)
+   so the letters aren't sliding across an invisible band. A short
+   text-shadow pulse fires on landing to sell "merge" as a distinct beat
+   rather than just a slide-and-stop. Implicit 0% keyframe = the element's
+   own pre-animation transform (set by .kr-k/.kr-r below), so krMerge only
+   needs a `to` frame. */
+.hero-word .kr{color:var(--accent);display:inline-block;opacity:0;
+  animation:krMerge .6s cubic-bezier(.2,.8,.3,1) .8s forwards,
+    krPulse .45s ease-out 1.4s forwards}
+.hero-word .kr-k{transform:translateX(-32px)}
+.hero-word .kr-r{transform:translateX(32px)}
+@keyframes krMerge{to{opacity:1;transform:translateX(0)}}
+@keyframes krPulse{
+  0%,100%{text-shadow:0 0 0 rgba(174,209,54,0)}
+  50%{text-shadow:0 0 18px rgba(174,209,54,.9)}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-word .kr{animation:none;opacity:1;transform:none}
+}
 .hero-rule{width:100%;height:4px;background:var(--accent);margin:16px 0 10px}
 .hero-sub{margin:0;font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;color:#bcd3e6}
@@ -2895,7 +2915,7 @@ def main():
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-titleblock">
-      <p class="hero-word"><span class="kr">K</span>lea<span class="kr">R</span>ance<svg viewBox="0 0 40 34" aria-hidden="true">
+      <p class="hero-word"><span class="kr kr-k">K</span>lea<span class="kr kr-r">R</span>ance<svg viewBox="0 0 40 34" aria-hidden="true">
           <path d="M2,22 L9,29 L17,10 L22,10 L25,4 L28,10 L35,10" fill="none"
             stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="hero-ping-sm" cx="25" cy="4" r="2.6" fill="none" stroke="var(--accent)"
