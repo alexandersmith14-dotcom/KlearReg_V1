@@ -2915,13 +2915,13 @@ def main():
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-titleblock">
-      <p class="hero-word"><span class="kr kr-k">K</span>lea<span class="kr kr-r">R</span>ance<svg viewBox="0 0 40 34" aria-hidden="true">
+      <p class="hero-word"><svg viewBox="0 0 40 34" aria-hidden="true">
           <path d="M2,22 L9,29 L17,10 L22,10 L25,4 L28,10 L35,10" fill="none"
             stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="hero-ping-sm" cx="25" cy="4" r="2.6" fill="none" stroke="var(--accent)"
             stroke-width="1.2" opacity="0"/>
           <circle cx="25" cy="4" r="2.6" fill="var(--accent)"/>
-        </svg></p>
+        </svg><span class="kr kr-k">K</span>lea<span class="kr kr-r">R</span>ance</p>
       <div class="hero-rule"></div>
       <p class="hero-sub"><b>by KAUFMAN <span class="hero-pipe">|</span> ROSSIN</b></p>
     </div>
