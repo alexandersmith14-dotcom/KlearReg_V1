@@ -410,7 +410,7 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
 .hero-word{font-family:inherit;font-weight:800;font-size:clamp(46px,7.5vw,88px);
   color:#fff;margin:0;line-height:1;letter-spacing:-.02em;
   display:flex;align-items:flex-end;gap:0}
-.hero-word svg{width:1.3em;height:1.1em;margin:0 -8px .1em 0;flex:none;overflow:visible}
+.hero-word svg{width:1.3em;height:1.1em;margin:0 -24px .1em 0;flex:none;overflow:visible}
 /* K/R merge: the wordmark's two brand-color letters start pulled apart
    (K left, R right) and slide together on load, landing right as the
    page's own .herowrap fade-in finishes (.24s delay + .5s duration above)
