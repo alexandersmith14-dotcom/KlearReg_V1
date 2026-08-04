@@ -410,7 +410,7 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
 .hero-word{font-family:inherit;font-weight:800;font-size:clamp(46px,7.5vw,88px);
   color:#fff;margin:0;line-height:1;letter-spacing:-.02em;
   display:flex;align-items:flex-end;gap:0}
-.hero-word svg{width:1.3em;height:1.1em;margin:0 -60px .1em 0;flex:none;overflow:visible}
+.hero-word svg{width:1.63em;height:1.1em;margin:0 -60px .1em 0;flex:none;overflow:visible}
 /* K/R merge: the wordmark's two brand-color letters start pulled apart
    (K left, R right) and slide together on load, landing right as the
    page's own .herowrap fade-in finishes (.24s delay + .5s duration above)
@@ -2915,8 +2915,8 @@ def main():
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-titleblock">
-      <p class="hero-word"><svg viewBox="0 0 40 34" aria-hidden="true">
-          <path d="M2,22 L9,29 L17,10 L22,10 L25,4 L28,10 L35,10" fill="none"
+      <p class="hero-word"><svg viewBox="0 0 50 34" aria-hidden="true">
+          <path d="M2,22 L9,29 L17,10 L22,10 L25,4 L28,10 L47,10" fill="none"
             stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="hero-ping-sm" cx="25" cy="4" r="2.6" fill="none" stroke="var(--accent)"
             stroke-width="1.2" opacity="0"/>
