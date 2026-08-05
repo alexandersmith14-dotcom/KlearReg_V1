@@ -498,6 +498,7 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
   .hero-divider{display:none}
   .hero-bgmark svg{width:340px;height:auto}
   .herowrap{margin-bottom:6px}
+  .hero-copy{text-align:justify;text-align-last:left}
 }
 
 /* "by KAUFMAN | ROSSIN" credit line — same navy/lime pipe as the full-size
