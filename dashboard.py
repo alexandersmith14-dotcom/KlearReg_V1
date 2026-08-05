@@ -435,7 +435,7 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
    flush against K (K's own glyph has a diagonal leg that reads as
    touching R's stem at true zero gap) so "KR" reads as two distinct
    letters, not a collision. */
-.hero-word .kr-r{--kr-gap:-1.45em;transform:translateX(32px);
+.hero-word .kr-r{--kr-gap:-1.15em;transform:translateX(32px);
   animation:krFormThenSettle 3s cubic-bezier(.4,0,.2,1) .8s forwards,
     krPulse .45s ease-out 1.8s forwards,
     krPulse .4s ease-out 3.8s forwards}
