@@ -410,7 +410,12 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
 .hero-word{font-family:inherit;font-weight:800;font-size:clamp(46px,7.5vw,88px);
   color:#fff;margin:0;line-height:1;letter-spacing:-.02em;
   display:flex;align-items:flex-end;gap:0}
-.hero-word svg{width:1.35em;height:1.1em;margin:0 -64px .1em 0;flex:none;overflow:visible}
+/* Pull-in was a fixed -64px, tuned against desktop's ~88px font-size. The
+   wordmark's font-size is a clamp() that floors at 46px on narrow phones,
+   so the icon shrinks but the pull stayed fixed -- on mobile it ate almost
+   the entire icon width, reading as the icon and the K tangled together.
+   em-based keeps the same visual gap-to-icon-size ratio at every size. */
+.hero-word svg{width:1.35em;height:1.1em;margin:0 -.727em .1em 0;flex:none;overflow:visible}
 /* K/R merge: the wordmark's two brand-color letters start pulled apart
    (K left, R right) and slide together on load, landing right as the
    page's own .herowrap fade-in finishes (.24s delay + .5s duration above)
@@ -498,7 +503,6 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
   .hero-divider{display:none}
   .hero-bgmark svg{width:340px;height:auto}
   .herowrap{margin-bottom:6px}
-  .hero-copy{text-align:justify;text-align-last:left}
 }
 
 /* "by KAUFMAN | ROSSIN" credit line — same navy/lime pipe as the full-size
