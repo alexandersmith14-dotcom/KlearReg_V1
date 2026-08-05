@@ -434,8 +434,14 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
    into its real position (2.8s, same moment .hero-word-rest starts
    fading in). Positioned relative to .kr-k itself (not the whole word)
    so it doesn't need a measured absolute offset. */
-.kr-divider{position:absolute;left:100%;top:50%;margin-left:10px;
-  width:4px;height:1.3em;background:var(--accent);border-radius:2px;
+/* margin-left/width were fixed 10px/4px, tuned against desktop's ~88px
+   wordmark font-size -- same scale-mismatch bug as the icon pull-in above.
+   At mobile's 46px floor that fixed footprint ate a much bigger share of
+   --kr-gap below (which IS em-based), so the divider ran into R instead of
+   sitting cleanly between the two letters. em-based keeps the same ratio
+   to --kr-gap at every size. */
+.kr-divider{position:absolute;left:100%;top:50%;margin-left:.114em;
+  width:3px;height:1.3em;background:var(--accent);border-radius:2px;
   transform:translateY(-50%) scaleY(0);transform-origin:center;
   animation:krDividerIn .3s ease-out 1.8s forwards,
     krDividerOut .3s ease-in 2.8s forwards}
@@ -503,6 +509,12 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
   .hero-divider{display:none}
   .hero-bgmark svg{width:340px;height:auto}
   .herowrap{margin-bottom:6px}
+  /* .hero-rule's 16px/10px margin is fixed px, not tied to the wordmark's
+     font-size (the rule sits outside .hero-word, so em there wouldn't
+     track the wordmark anyway) -- it just reads as oversized once the
+     wordmark itself has shrunk to its 46px mobile floor. Tightened to
+     match, same reasoning as the other mobile paddings in this block. */
+  .hero-rule{margin:8px 0 8px}
 }
 
 /* "by KAUFMAN | ROSSIN" credit line — same navy/lime pipe as the full-size
