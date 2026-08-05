@@ -531,6 +531,7 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
      Centered under the wordmark on mobile only; desktop's right-aligned
      look is untouched. */
   .hero-sub{align-self:center;text-align:center}
+  .hero-copy{text-align:justify;text-align-last:left}
 }
 
 /* "by KAUFMAN | ROSSIN" credit line — same navy/lime pipe as the full-size
@@ -2999,8 +3000,8 @@ def main():
       <p class="hero-sub"><b>by KAUFMAN <span class="hero-pipe">|</span> ROSSIN</b></p>
     </div>
     <div class="hero-divider"></div>
-    <p class="hero-copy">Compliance teams don't need more alerts — they need
-      clarity. KleaRance, Kaufman Rossin's regulatory intelligence platform,
+    <p class="hero-copy">Compliance teams don't need more alerts. They need
+      clarity. KleaRance Kaufman Rossin's regulatory intelligence platform,
       transforms the constant stream of rule changes into measurable,
       manageable insight your team can act on immediately.</p>
   </div>
