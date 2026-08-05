@@ -420,9 +420,25 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
    own pre-animation transform (set by .kr-k/.kr-r below), so krMerge only
    needs a `to` frame. */
 .hero-word .kr{color:var(--accent);display:inline-block;opacity:0}
-.hero-word .kr-k{transform:translateX(-32px);
+.hero-word .kr-k{position:relative;transform:translateX(-32px);
   animation:krMerge 1s cubic-bezier(.2,.8,.3,1) .8s forwards,
     krPulse .45s ease-out 1.8s forwards}
+/* Echoes the KAUFMAN | ROSSIN credit line's own pipe divider (.hero-pipe)
+   — grows in right as K/R land and form "KR" (1.8s, same moment as their
+   pulse), holds through the pause, then shrinks back out as R continues
+   into its real position (2.8s, same moment .hero-word-rest starts
+   fading in). Positioned relative to .kr-k itself (not the whole word)
+   so it doesn't need a measured absolute offset. */
+.kr-divider{position:absolute;left:100%;top:50%;margin-left:10px;
+  width:4px;height:1.3em;background:var(--accent);border-radius:2px;
+  transform:translateY(-50%) scaleY(0);transform-origin:center;
+  animation:krDividerIn .3s ease-out 1.8s forwards,
+    krDividerOut .3s ease-in 2.8s forwards}
+@keyframes krDividerIn{to{transform:translateY(-50%) scaleY(1)}}
+@keyframes krDividerOut{to{transform:translateY(-50%) scaleY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .kr-divider{animation:none;transform:translateY(-50%) scaleY(0)}
+}
 /* R doesn't just slide into its real spot — it stops next to K first
    (forming "KR" at the same moment K lands: 33% of this 3s run = .8s
    delay + 1s, matching krMerge's own timing above), holds there through
@@ -2945,7 +2961,7 @@ def main():
           <circle class="hero-ping-sm" cx="25" cy="4" r="2.6" fill="none" stroke="var(--accent)"
             stroke-width="1.2" opacity="0"/>
           <circle cx="25" cy="4" r="2.6" fill="var(--accent)"/>
-        </svg><span class="kr kr-k">K</span><span class="hero-word-rest">lea</span><span class="kr kr-r">R</span><span class="hero-word-rest">ance</span></p>
+        </svg><span class="kr kr-k">K<span class="kr-divider" aria-hidden="true"></span></span><span class="hero-word-rest">lea</span><span class="kr kr-r">R</span><span class="hero-word-rest">ance</span></p>
       <div class="hero-rule"></div>
       <p class="hero-sub"><b>by KAUFMAN <span class="hero-pipe">|</span> ROSSIN</b></p>
     </div>
