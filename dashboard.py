@@ -419,18 +419,39 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
    rather than just a slide-and-stop. Implicit 0% keyframe = the element's
    own pre-animation transform (set by .kr-k/.kr-r below), so krMerge only
    needs a `to` frame. */
-.hero-word .kr{color:var(--accent);display:inline-block;opacity:0;
+.hero-word .kr{color:var(--accent);display:inline-block;opacity:0}
+.hero-word .kr-k{transform:translateX(-32px);
   animation:krMerge .6s cubic-bezier(.2,.8,.3,1) .8s forwards,
     krPulse .45s ease-out 1.4s forwards}
-.hero-word .kr-k{transform:translateX(-32px)}
-.hero-word .kr-r{transform:translateX(32px)}
+/* R doesn't just slide into its real spot — it stops next to K first
+   (forming "KR" at the same moment K lands, 35% of this 1.7s run = .8s
+   delay + .6s, matching krMerge's own timing above), holds there through
+   65%, then continues on into its real position while .hero-word-rest
+   (the "lea"/"ance" spans, still at opacity 0) fades in around it so R
+   doesn't appear to slide across already-visible letters. --kr-gap is
+   the horizontal distance from R's real position back to just right of
+   K, in em so it scales with the responsive wordmark size instead of a
+   viewport-specific px guess. */
+.hero-word .kr-r{--kr-gap:-1.73em;transform:translateX(32px);
+  animation:krFormThenSettle 1.7s cubic-bezier(.4,0,.2,1) .8s forwards,
+    krPulse .45s ease-out 1.4s forwards,
+    krPulse .4s ease-out 2.5s forwards}
 @keyframes krMerge{to{opacity:1;transform:translateX(0)}}
+@keyframes krFormThenSettle{
+  0%{opacity:0;transform:translateX(32px)}
+  35%{opacity:1;transform:translateX(var(--kr-gap))}
+  65%{opacity:1;transform:translateX(var(--kr-gap))}
+  100%{opacity:1;transform:translateX(0)}
+}
 @keyframes krPulse{
   0%,100%{text-shadow:0 0 0 rgba(174,209,54,0)}
   50%{text-shadow:0 0 18px rgba(174,209,54,.9)}
 }
+.hero-word-rest{opacity:0;animation:heroRestIn .4s ease-out 1.9s forwards}
+@keyframes heroRestIn{to{opacity:1}}
 @media (prefers-reduced-motion:reduce){
   .hero-word .kr{animation:none;opacity:1;transform:none}
+  .hero-word-rest{animation:none;opacity:1}
 }
 .hero-rule{width:100%;height:4px;background:var(--accent);margin:16px 0 10px}
 .hero-sub{margin:0;font-size:12px;letter-spacing:.1em;
@@ -2921,7 +2942,7 @@ def main():
           <circle class="hero-ping-sm" cx="25" cy="4" r="2.6" fill="none" stroke="var(--accent)"
             stroke-width="1.2" opacity="0"/>
           <circle cx="25" cy="4" r="2.6" fill="var(--accent)"/>
-        </svg><span class="kr kr-k">K</span>lea<span class="kr kr-r">R</span>ance</p>
+        </svg><span class="kr kr-k">K</span><span class="hero-word-rest">lea</span><span class="kr kr-r">R</span><span class="hero-word-rest">ance</span></p>
       <div class="hero-rule"></div>
       <p class="hero-sub"><b>by KAUFMAN <span class="hero-pipe">|</span> ROSSIN</b></p>
     </div>
