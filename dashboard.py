@@ -523,6 +523,14 @@ h1.wordmark svg{width:.85em;height:.72em;margin-bottom:.08em;flex:none}
      toward K and off of R. Desktop unchanged. */
   .hero-word svg{margin-right:-.65em;transform:translateY(-4px)}
   .kr-divider{margin-left:.05em}
+  /* .hero-titleblock's align-items:flex-end right-aligns the credit line
+     to match the wordmark's right edge -- the approved desktop treatment.
+     On a narrow mobile column the short "by KAUFMAN | ROSSIN" text just
+     floats with a big gap to its left and nothing else nearby anchors
+     that right edge, reading as adrift rather than deliberately aligned.
+     Centered under the wordmark on mobile only; desktop's right-aligned
+     look is untouched. */
+  .hero-sub{align-self:center;text-align:center}
 }
 
 /* "by KAUFMAN | ROSSIN" credit line — same navy/lime pipe as the full-size
