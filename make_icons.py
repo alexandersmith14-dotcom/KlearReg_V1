@@ -11,14 +11,14 @@ KR's icon splits two letters (K|R, one per word of the firm name); a single
 product name has no second word to split, so the pipe now sits to the
 right of the monogram instead, echoing the same "letter, pipe, letter"
 shape without inventing a second initial. Same PRODUCT_NAME-driven
-monogram as v2, so this file is identical for Mihari ("M") and Klearance
+monogram as v2, so this file is identical for Mihari ("M") and KlearReg
 ("C") except for that one constant.
 """
 import json
 
 from PIL import Image, ImageDraw, ImageFont
 
-PRODUCT_NAME = "Klearance"
+PRODUCT_NAME = "KlearReg"
 MONOGRAM = PRODUCT_NAME[0].upper()
 
 # Bump alongside the matching ?v= in dashboard.py's <link> tags whenever the
